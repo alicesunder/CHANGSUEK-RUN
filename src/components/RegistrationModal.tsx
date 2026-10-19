@@ -167,15 +167,17 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                   key={item.id}
                   onClick={() => { setSelectedTicket(item.id); setSelectedRoute(item.route); }}
                   className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
-                    selectedTicket === item.id ? item.color + ' ring-2 ring-offset-2 ring-[#7B3FC6] scale-[1.01]' : 'border-[#E5E0EE] hover:border-[#FF9A76]'
+                    selectedTicket === item.id
+                      ? 'bg-white border-[#8B43D7] ring-2 ring-offset-2 ring-[#7B3FC6] ring-offset-[#180E28] scale-[1.01] shadow-lg'
+                      : 'border-[#E2D8EA] bg-[#241432] hover:border-[#FF9A76] hover:bg-[#2B1740] dark:border-[#E2D8EA] dark:bg-[#241432] dark:hover:bg-[#2B1740]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-black text-[#17151C] text-sm sm:text-base"><span className="mr-1.5">{item.emoji}</span>{item.title}</span>
-                    <span className="font-extrabold text-[#7B3FC6] text-sm whitespace-nowrap">{item.price}</span>
+                    <span className={`font-black text-sm sm:text-base ${selectedTicket === item.id ? 'text-[#241432]' : 'text-white dark:text-white'}`}><span className="mr-1.5">{item.emoji}</span>{item.title}</span>
+                    <span className={`font-extrabold text-sm whitespace-nowrap ${selectedTicket === item.id ? 'text-[#7430C3]' : 'text-[#B879FF] dark:text-[#B879FF]'}`}>{item.price}</span>
                   </div>
-                  <p className="text-xs text-[#6F6878] mb-2">{item.desc}</p>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-1 bg-white/80 rounded-full text-[#6F6878] border border-[#EEE4FA]">{item.id === '5km-person' ? <><span className="line-through opacity-70">ราคาปกติ 790 บาท</span><span className="text-[#2EAD62]">• ราคาพิเศษ</span></> : item.note}</span>
+                  <p className={`text-xs mb-2 ${selectedTicket === item.id ? 'text-[#62566D]' : 'text-[#C9BED4] dark:text-[#C9BED4]'}`}>{item.desc}</p>
+                  <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-1 rounded-full border ${selectedTicket === item.id ? 'bg-[#F0E3FF] text-[#59258B] border-[#E3D0FA]' : 'bg-[#39254B] text-[#E7DDF0] border-[#59436A]'}`}>{item.id === '5km-person' ? <><span className="line-through opacity-70">ราคาปกติ 790 บาท</span><span className="text-[#2EAD62]">• ราคาพิเศษ</span></> : item.note}</span>
                 </div>
               ))}
             </div>
